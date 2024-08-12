@@ -5,10 +5,8 @@ const path = require('path');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
-// Load the CA certificate
 const caCert = fs.readFileSync(path.resolve(__dirname, 'ca-certificate.crt'));
 
-// Create a MySQL connection
 const db = mysql.createConnection({
   host: 'ankit-f1-tuf.k.aivencloud.com',
   user: 'avnadmin',
@@ -20,7 +18,6 @@ const db = mysql.createConnection({
     ca: caCert
   }
 });
-// Connect to the MySQL database
 db.connect((err) => {
   if (err) {
     console.error('Error connecting to the database:', err);
@@ -29,14 +26,11 @@ db.connect((err) => {
   console.log('Connected to the MySQL database');
 });
 
-// Initialize the Express app
 const app = express();
 
-// Use CORS and body-parser middleware
 app.use(cors());
 app.use(bodyParser.json());
 
-// Define a route to fetch flashcards
 app.get('/flashcards', (req, res) => {
   db.query('SELECT * FROM flashcards', (err, result) => {
     if (err) {
@@ -82,7 +76,6 @@ app.put('/flashcards/:id', (req, res) => {
   });
 });
 
-// Delete a flashcard
 app.delete('/flashcards/:id', (req, res) => {
   const { id } = req.params;
   const sql = 'DELETE FROM flashcards WHERE id = ?';
@@ -91,7 +84,6 @@ app.delete('/flashcards/:id', (req, res) => {
     res.status(204).send();
   });
 });
-// Start the Express server
 app.listen(5000, () => {
   console.log('Server is running on port 5000');
 });
