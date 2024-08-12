@@ -52,6 +52,7 @@ function App() {
           } />
           <Route path="/" element={
             flashcards.length > 0 ? (
+              <>
               <div>
                 <Flashcard
                   question={flashcards[currentIndex].question}
@@ -59,19 +60,83 @@ function App() {
                   isFlipped={isFlipped}
                   flipping={flipping}
                 />
-                <div className="but">
-                  <button onClick={prevCard} >Previous</button>
-                  <button onClick={nextCard} >Next</button>
-                </div>
-                <br></br>
-                <Link to="/admin">Go to Admin Dashboard</Link>
-              </div>
+              <div style={{ textAlign: 'center', marginTop: '20px' }}>
+  <div className="but" style={{ display: 'flex', justifyContent: 'center', gap: '20px', margin: '20px 0' }}>
+    <button 
+      onClick={prevCard} 
+      style={{
+        padding: '10px 20px',
+        fontSize: '16px',
+        borderRadius: '5px',
+        backgroundColor: '#4CAF50', 
+        color: 'white',
+        border: 'none',
+        cursor: 'pointer',
+        transition: 'background-color 0.3s',
+      }}
+      onMouseOver={(e) => e.target.style.backgroundColor = '#45a049'}
+      onMouseOut={(e) => e.target.style.backgroundColor = '#4CAF50'}
+    >
+      Previous
+    </button>
+    <button 
+      onClick={nextCard} 
+      style={{
+        padding: '10px 20px',
+        fontSize: '16px',
+        borderRadius: '5px',
+        backgroundColor: '#008CBA', 
+        color: 'white',
+        border: 'none',
+        cursor: 'pointer',
+        transition: 'background-color 0.3s',
+      }}
+      onMouseOver={(e) => e.target.style.backgroundColor = '#007BB5'}
+      onMouseOut={(e) => e.target.style.backgroundColor = '#008CBA'}
+    >
+      Next
+    </button>
+  </div>
+  <br />
+  <Link 
+    to="/admin" 
+    style={{
+      fontSize: '18px',
+      color: '#007BFF',
+      textDecoration: 'none',
+      fontWeight: 'bold',
+      transition: 'color 0.3s',
+    }}
+    onMouseOver={(e) => e.target.style.color = '#0056b3'}
+    onMouseOut={(e) => e.target.style.color = '#007BFF'}
+  >
+    Go to Admin Dashboard
+  </Link>
+  
+</div>
+</div>
+</>
             ) : (
               <div>
               <p>Loading flashcards...</p>
-              <Link to="/admin">Go to Admin Dashboard</Link>
+              <Link 
+    to="/admin" 
+    style={{
+      fontSize: '18px',
+      color: '#007BFF',
+      textDecoration: 'none',
+      fontWeight: 'bold',
+      transition: 'color 0.3s',
+    }}
+    onMouseOver={(e) => e.target.style.color = '#0056b3'}
+    onMouseOut={(e) => e.target.style.color = '#007BFF'}
+  >
+    Go to Admin Dashboard
+  </Link>
+
               </div> 
             )
+            
           } />
         </Routes>
       </div>
