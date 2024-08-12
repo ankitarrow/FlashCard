@@ -67,8 +67,10 @@ function App() {
                 <Link to="/admin">Go to Admin Dashboard</Link>
               </div>
             ) : (
+              <div>
               <p>Loading flashcards...</p>
-<Link to="/admin">Go to Admin Dashboard</Link>
+              <Link to="/admin">Go to Admin Dashboard</Link>
+              </div> 
             )
           } />
         </Routes>
