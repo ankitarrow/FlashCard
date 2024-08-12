@@ -68,6 +68,7 @@ function App() {
               </div>
             ) : (
               <p>Loading flashcards...</p>
+<Link to="/admin">Go to Admin Dashboard</Link>
             )
           } />
         </Routes>
